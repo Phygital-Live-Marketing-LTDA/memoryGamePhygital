@@ -1,0 +1,64 @@
+.lead-modal {
+  background-color: rgba(132, 0, 255, 0.235);
+  width: 300px;
+  padding: 20px;
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 7px;
+  margin-top: 20px; 
+  margin-bottom: 20px;
+  animation: leadBackgroundAnimation 10s infinite alternate;
+}
+
+.lead-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.441);
+}
+
+@keyframes leadBackgroundAnimation {
+  0% {
+      background-color: #4c204a;
+  }
+
+  50% {
+      background-color: #120211;
+  }
+
+  100% {
+      background-color: #3f0137
+  }
+}
+
+.form-group {
+  margin-bottom: 15px;
+  margin-top: 20px;
+  color: #ffff;
+  text-align: center;
+}
+
+.form-group input {
+  font-weight: 400;
+  color: #ffff;
+  width: 80%;
+  padding: 10px;
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid #ffffff;
+  outline: none;
+}
+
+button{
+  margin-top: 20px;
+  margin-bottom: 20px ;
+}

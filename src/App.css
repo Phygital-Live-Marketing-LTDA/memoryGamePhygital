@@ -1,0 +1,158 @@
+.App {
+  max-width: 100%;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+}
+
+.game-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+}
+
+
+button {
+  background: none;
+  border: 1px solid #fff;
+  padding: 8px 16px;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+button:hover {
+  background: #3c1421;
+  color: #fff;
+}
+
+.right-panel,
+.left-panel {
+  background-color: rgba(24, 22, 26, 0.512);
+  flex: 1;
+  padding: 10px;
+  border: 0.1px solid #ffffff08;
+  border-radius: 5px;
+}
+
+.right-panel {
+  max-height: 95vh;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(120px, 1fr));
+  gap: 10px;
+  width: 90%;
+  max-height: 95vh;
+
+}
+
+.player-info {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+}
+
+
+@media (min-width: 760px) {
+  .game-container {
+    flex-direction: row;
+  }
+
+  .right-panel {
+    display: flex;
+    align-items: center;
+  }
+}
+
+@media (min-width: 660px) {
+
+  .right-panel {
+    display: flex;
+    align-items: normal;
+  }
+}
+
+#confetti-canvas {
+  position: absolute;
+  top: 0;
+}
+
+.animate-points {
+  animation: bounce 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
+}
+
+@keyframes bounce {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(-20px);
+  }
+
+  60% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-points-fade {
+  opacity: 0;
+}
+
+h2.animate-points-fade {
+  visibility: hidden;
+}
+
+.rainbow-text {
+  animation: rainbow 2s linear infinite;
+}
+
+@keyframes rainbow {
+  0% {
+    color: #ff0000;
+  }
+
+  16.666% {
+    color: #ff8000;
+  }
+
+  33.333% {
+    color: #ffff00;
+  }
+
+  50% {
+    color: #80ff00;
+  }
+
+  66.666% {
+    color: #00ff80;
+  }
+
+  83.333% {
+    color: #0080ff;
+  }
+
+  100% {
+    color: #8000ff;
+  }
+}
