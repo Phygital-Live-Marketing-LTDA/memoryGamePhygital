@@ -114,11 +114,6 @@ span.text-sm {
   }
 }
 
-#confetti-canvas {
-  position: absolute;
-  top: 0;
-}
-
 .animate-points {
   animation: bounce 0.5s ease-in-out;
   transition: opacity 0.5s ease-in-out;

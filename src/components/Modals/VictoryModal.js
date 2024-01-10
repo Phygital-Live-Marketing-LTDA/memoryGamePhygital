@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './victoryModal.css';
-import confetti from 'canvas-confetti';
 
 const VictoryModal = ({ points, turns, onRestart, totalPoints, onClose }) => {
   const [displayedPoints, setDisplayedPoints] = useState(0);
@@ -9,13 +8,6 @@ const VictoryModal = ({ points, turns, onRestart, totalPoints, onClose }) => {
     function randomInRange(min, max) {
       return Math.random() * (max - min) + min;
     }
-
-    confetti({
-      angle: randomInRange(55, 125),
-      spread: randomInRange(50, 70),
-      particleCount: randomInRange(50, 100),
-      origin: { y: 0.6 },
-    });
 
     // Inicia a contagem dos pontos gradualmente
     const intervalId = setInterval(() => {

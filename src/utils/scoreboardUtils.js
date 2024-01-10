@@ -1,24 +1,20 @@
 // Função para atualizar os pontos de um usuário específico no placar
-export const updateUserPointsInScoreboard = (userName, points) => {
-    // Obtém os dados do placar do armazenamento local ou inicializa como um array vazio
-    const scoreboardData = JSON.parse(localStorage.getItem('scoreboard')) || [];
-    const userIndex = scoreboardData.findIndex((item) => item.name === userName);
-    if (userIndex !== -1) {
-        scoreboardData[userIndex].points = points;
-    } else {
-        scoreboardData.push({ name: userName, points });
-    }
-    scoreboardData.sort((a, b) => b.points - a.points);
-
-    // Armazena os dados atualizados no armazenamento local
-    localStorage.setItem('scoreboard', JSON.stringify(scoreboardData));
+export const updateUserPointsInScoreboard = (name, points) => {
+    fetch('http://localhost:3001/leads', {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, points }),
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));
 };
-
 // Função para adicionar uma nova entrada no placar geral
 export const updateGeneralScoreboard = (entry) => {
     const prevScoreBoard = getScoreboardData();
 
-    // Adiciona a nova entrada aos dados existentes
     prevScoreBoard.push(entry);
     localStorage.setItem('scoreboard', JSON.stringify(prevScoreBoard));
 };

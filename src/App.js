@@ -119,20 +119,19 @@ function App() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cards, turns]);
+
+
   const handleGameOver = (isWinner) => {
     if (isWinner) {
       setCountingPoints(true);
 
       setTimeout(() => {
         setVictory(true);
-        // Crie uma variável local para armazenar a pontuação acumulada
         let accumulatedPoints = points + turns * 1000;
-        // Atualize o estado 'points' diretamente
         setPoints(accumulatedPoints);
         setCountingPoints(false);
         if (leadData) {
-          // Atualize a pontuação no placar usando a pontuação acumulada
-          updateScoreboard(leadData.name, accumulatedPoints);
+          updateUserPointsInScoreboard(leadData.name, accumulatedPoints);
         }
       }, 2000);
     } else {
@@ -200,10 +199,10 @@ function App() {
           )}
 
           <div className='player-info'>
-          <p className={rainbowText ? 'rainbow-text' : ''} id='score'>{points} <span className='text-sm'>pontos</span></p>
-          <div className='player-info-small'>
-            <p>{leadData.name}</p>
-            <p className='player-turns'>Turnos {turns}</p>
+            <p className={rainbowText ? 'rainbow-text' : ''} id='score'>{points} <span className='text-sm'>pontos</span></p>
+            <div className='player-info-small'>
+              <p>{leadData.name}</p>
+              <p className='player-turns'>Turnos {turns}</p>
             </div>
           </div>
           <div className='game-container '>

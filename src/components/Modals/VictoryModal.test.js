@@ -2,12 +2,6 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import VictoryModal from './VictoryModal';
-import confetti from 'canvas-confetti';
-
-jest.mock('canvas-confetti', () => ({
-    __esModule: true,
-    default: jest.fn(),
-}));
 
 describe('VictoryModal Component', () => {
     const points = 5000;
@@ -25,7 +19,6 @@ describe('VictoryModal Component', () => {
             onClose={onClose}
         />);
 
-        expect(confetti).toHaveBeenCalledTimes(1);
 
         expect(screen.getByText('Vitória')).toBeInTheDocument();
         expect(screen.getByText('Você encontrou todas as combinações!')).toBeInTheDocument();

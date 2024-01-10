@@ -13,30 +13,30 @@ function LeadCapture({ onStartGame, onCardTurn }) {
     // Verifique se os dados do usuário já existem no sessionStorage
     // Usuário com os mesmos dados já existe, inicie o jogo com os dados existentes
     // Usuário não encontrado no sessionStorage, crie um novo registro
-
     const handleStartGame = () => {
         if (name && email) {
-            const storedUserData = JSON.parse(sessionStorage.getItem('userData'));
-            if (storedUserData && storedUserData.name === name && storedUserData.email === email) {
-                onStartGame(storedUserData);
-            } else {
-                const lead = { name, email, points };
-                onCardTurn(points)
-                saveLead(lead);
-                sessionStorage.setItem('userData', JSON.stringify(lead)); // Armazena os dados no sessionStorage
-                onStartGame(lead);
-                saveScoreboardData(name, points); // Salva o nome e pontos no Scoreboard
-            }
+            const lead = { name, email, points };
+            onCardTurn(points);
+
+            fetch('http://localhost:3001/leads', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(lead),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Success:', data);
+                    onStartGame(lead);
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
         } else {
             toast("Preencha todos os campos!");
         }
-    }
-
-    const saveLead = (lead) => {
-        const existingLeads = JSON.parse(localStorage.getItem("leads")) || [];
-        existingLeads.push(lead);
-        localStorage.setItem("leads", JSON.stringify(existingLeads));
-    }
+    };
 
     return (
         <div className="lead-modal-overlay">
