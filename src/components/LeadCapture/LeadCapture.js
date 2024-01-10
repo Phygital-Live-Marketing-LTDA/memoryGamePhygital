@@ -1,18 +1,14 @@
 import React, { useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { saveScoreboardData } from '../../utils/scoreboardUtils';
 
 import './LeadCapture.css'
 
-function LeadCapture({ onStartGame, onCardTurn }) {
+function LeadCapture({ onStartGame, onCardTurn, onSubmit }) { // Adicione onSubmit aqui
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [points] = useState(0);
 
-    // Verifique se os dados do usuário já existem no sessionStorage
-    // Usuário com os mesmos dados já existe, inicie o jogo com os dados existentes
-    // Usuário não encontrado no sessionStorage, crie um novo registro
     const handleStartGame = () => {
         if (name && email) {
             const lead = { name, email, points };
@@ -25,14 +21,14 @@ function LeadCapture({ onStartGame, onCardTurn }) {
                 },
                 body: JSON.stringify(lead),
             })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Success:', data);
-                    onStartGame(lead);
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                });
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                onStartGame(lead); // Esta linha inicia o jogo com os dados do usuário
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
         } else {
             toast("Preencha todos os campos!");
         }
