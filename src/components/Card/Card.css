@@ -1,11 +1,12 @@
 .card {
     position: relative;
-    z-index: 1
+    z-index: 1;
   }
   .card img {
+    height: 20rem;
     margin: 0;
     padding: 0;
-    width: 80%; 
+    width: 100%; 
     object-fit: cover;
     border: solid #8b710b;
     border-radius:20px ;
@@ -23,6 +24,9 @@
     .card .back {
     transition: all ease-in 0.2s;
     transition-delay: 0.2s;
+  }
+  .card .back img {
+    object-fit: contain !important;
   }
   .flipped .back {
     transform: rotateY(90deg);

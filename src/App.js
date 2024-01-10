@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import SingleCard from './components/Card/Card';
 import LeadCapture from './components/LeadCapture/LeadCapture';
-import ScoreBoard from './components/Scoreboard/ScoreBoard';
 
 import { updateUserPointsInScoreboard, updateScoreboard } from './utils/scoreboardUtils';
 
@@ -40,7 +39,7 @@ function App() {
       .map((card) => ({ ...card, id: Math.random() }));
 
     setCards(shuffledCards);
-    setTurns(25);
+    setTurns(500);
     setChoices([]);
     setVictory(false);
     setDefeat(false);
@@ -175,6 +174,9 @@ function App() {
 
   return (
     <div className="App">
+      <div className='flex justify-center mb-4 logo'>
+        <img src='https://www.figma.com/file/V5EZ6XpHsPav7dULbSlWVX/image/d08184b272a3eefdfa1cbefb0749a75fd33f4b22' alt='logo da empresa Phygital Lab' />
+      </div>
       {!leadData ? (
         <LeadCapture
           onCardTurn={setPoints}
@@ -196,22 +198,16 @@ function App() {
               onClose={handleCloseModal}
             />
           )}
-          <div className='game-container'>
-            <div className='left-panel'>
-              <div className='game-info'>
-                <ScoreBoard
-                  points={points}
-                  currentPlayerName={leadData.name}
-                  totalPoints={totalPoints} />
-                <button onClick={shuffleCards}>Novo Jogo</button>
-              </div>
+
+          <div className='player-info'>
+          <p className={rainbowText ? 'rainbow-text' : ''} id='score'>{points} <span className='text-sm'>pontos</span></p>
+          <div className='player-info-small'>
+            <p>{leadData.name}</p>
+            <p className='player-turns'>Turnos {turns}</p>
             </div>
+          </div>
+          <div className='game-container '>
             <div className='right-panel'>
-              <div className='player-info' >
-                <p className='player-turns'>Turnos: {turns}</p>
-                <p className={rainbowText ? 'rainbow-text' : ''}>Pontuação: {points}</p>
-                <p>{leadData.name}</p>
-              </div>
               <div className="card-grid">
                 {cards.map((card) => (
                   <SingleCard

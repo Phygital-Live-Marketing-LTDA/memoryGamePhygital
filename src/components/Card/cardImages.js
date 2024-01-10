@@ -5,8 +5,8 @@ export const cardImages = [
     { src: '/img/card4.jpg', matched: false },
     { src: '/img/card5.jpg', matched: false },
     { src: '/img/card6.jpg', matched: false },
-    { src: '/img/card7.jpg', matched: false },
-    { src: '/img/card8.jpg', matched: false },
-    { src: '/img/card9.jpg', matched: false },
-    { src: '/img/card10.jpg', matched: false },
+    // { src: '/img/card7.jpg', matched: false },
+    // { src: '/img/card8.jpg', matched: false },
+    // { src: '/img/card9.jpg', matched: false },
+    // { src: '/img/card10.jpg', matched: false },
 ];

@@ -1,6 +1,6 @@
 .scoreboard {
   overflow-y: auto;
-  display: flex;
+  display: block;
   flex-direction: column;
   justify-content: space-between;
   background-color: #5c263840;
@@ -15,6 +15,7 @@ th,
 td {
   border: 1px solid #ffffff3b;
   padding: 10px;
+  display: block;
 }
 
 table {
@@ -22,9 +23,4 @@ table {
   width: 100%;
 }
 
-@media (max-width: 760px) {
-  .scoreboard{
-    max-height: 150px;
-  }
-  
-}
+

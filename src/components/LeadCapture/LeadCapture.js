@@ -8,7 +8,6 @@ import './LeadCapture.css'
 function LeadCapture({ onStartGame, onCardTurn }) {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
-    const [phone, setPhone] = useState("");
     const [points] = useState(0);
 
     // Verifique se os dados do usuário já existem no sessionStorage
@@ -16,12 +15,12 @@ function LeadCapture({ onStartGame, onCardTurn }) {
     // Usuário não encontrado no sessionStorage, crie um novo registro
 
     const handleStartGame = () => {
-        if (name && email && phone) {
+        if (name && email) {
             const storedUserData = JSON.parse(sessionStorage.getItem('userData'));
             if (storedUserData && storedUserData.name === name && storedUserData.email === email) {
                 onStartGame(storedUserData);
             } else {
-                const lead = { name, email, phone, points };
+                const lead = { name, email, points };
                 onCardTurn(points)
                 saveLead(lead);
                 sessionStorage.setItem('userData', JSON.stringify(lead)); // Armazena os dados no sessionStorage
@@ -31,15 +30,6 @@ function LeadCapture({ onStartGame, onCardTurn }) {
         } else {
             toast("Preencha todos os campos!");
         }
-    }
-
-    // Função para formatar o campo de telefone com os parênteses automaticamente e remove caracteres não numéricos
-    const formatPhoneNumber = (input) => {
-        let formattedPhone = input.replace(/\D/g, '');  
-        if (formattedPhone.length >= 2) {
-            formattedPhone = `(${formattedPhone.slice(0, 2)}) ${formattedPhone.slice(2)}`;
-        }
-        return formattedPhone;
     }
 
     const saveLead = (lead) => {
@@ -85,18 +75,7 @@ function LeadCapture({ onStartGame, onCardTurn }) {
                         maxLength={30}
                     />
                 </div>
-                <div className="form-group">
-                    <input
-                        type="text"
-                        placeholder="(DD) XXXXX-XXXX"
-                        value={formatPhoneNumber(phone)}
-                        onChange={(e) => {
-                            const inputValue = e.target.value;
-                            setPhone(inputValue);
-                        }}
-                        maxLength={14}
-                    />
-                </div>
+
                 <button onClick={handleStartGame}>Iniciar Jogo</button>
             </div>
         </div>
