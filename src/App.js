@@ -1,41 +1,23 @@
 import React, { useState } from 'react';
 import './App.css';
-import LeadCapture from './components/LeadCapture/LeadCapture';
 import GameLogic from './utils/GameLogic';
-import SplashScreen from './pages/InitialPage';
+import InitialPage from './pages/InitialPage';
 
 function App() {
   const [leadData, setLeadData] = useState(null);
-  const [gameStarted, setGameStarted] = useState(false);
-  const [points, setPoints] = useState(0);
-
-
-  const updatePoints = (newPoints) => {
-    setPoints(newPoints);
-  };
 
   const handleStartGame = (lead) => {
     setLeadData(lead);
-    setGameStarted(true);
   };
 
-  if (!gameStarted) {
-    return (
-      <SplashScreen onStartGame={() => setGameStarted(true)} />
-    );
-  }
-
+  // Se não temos dados de lead, mostre a InitialPage.
+  // Uma vez que os dados são capturados, leadData será atualizado e o GameLogic será renderizado.
   if (!leadData) {
-    return (
-      <LeadCapture
-      onStartGame={handleStartGame}
-      onCardTurn={updatePoints} // Certifique-se de que esta função está definida corretamente
-    />    );
+    return <InitialPage onStartGame={handleStartGame} />;
   }
 
-  return (
-    <GameLogic leadData={leadData} />
-  );
+  // Se temos dados de lead, mostre o GameLogic.
+  return <GameLogic leadData={leadData} />;
 }
 
 export default App;

@@ -4,7 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import './LeadCapture.css'
 
-function LeadCapture({ onStartGame, onCardTurn, onSubmit }) { // Adicione onSubmit aqui
+function LeadCapture({ onStartGame, onCardTurn }) {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [points] = useState(0);
@@ -12,7 +12,6 @@ function LeadCapture({ onStartGame, onCardTurn, onSubmit }) { // Adicione onSubm
     const handleStartGame = () => {
         if (name && email) {
             const lead = { name, email, points };
-            onCardTurn(points);
 
             fetch('http://localhost:3001/leads', {
                 method: 'POST',
@@ -21,14 +20,14 @@ function LeadCapture({ onStartGame, onCardTurn, onSubmit }) { // Adicione onSubm
                 },
                 body: JSON.stringify(lead),
             })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Success:', data);
-                onStartGame(lead); // Esta linha inicia o jogo com os dados do usuário
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Success:', data);
+                    onStartGame(lead); // Esta linha inicia o jogo com os dados do usuário
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
         } else {
             toast("Preencha todos os campos!");
         }
