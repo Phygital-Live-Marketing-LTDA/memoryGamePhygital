@@ -8,7 +8,7 @@
     padding: 0;
     width: 100%; 
     object-fit: cover;
-    border: solid #8b710b;
+    border: solid #000000;
     border-radius:20px ;
     column-gap: 0px;
   }

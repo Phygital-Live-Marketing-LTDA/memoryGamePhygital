@@ -16,7 +16,7 @@ function InitialPage({ onStartGame }) {
 
     return (
         <div className='bg-black h-screen flex flex-col justify-center items-center' onClick={!showLeadCapture ? handleScreenClick : null}>
-            <div className='flex justify-center mb-4'>
+            <div className='flex justify-center mt-10'>
                 <img className='animate pop delay' src='https://www.figma.com/file/V5EZ6XpHsPav7dULbSlWVX/image/d08184b272a3eefdfa1cbefb0749a75fd33f4b22' alt='logo da empresa Phygital Lab' />
             </div>
             <div className='flex items-center justify-center gap-2 '>
