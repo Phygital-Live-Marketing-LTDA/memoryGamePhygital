@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const sqlite3 = require('sqlite3').verbose();
+const path = require('path');
+
 
 process.env.TZ = 'America/Sao_Paulo';
 
@@ -9,6 +11,22 @@ const port = 3001;
 
 app.use(cors());
 app.use(express.json());
+
+// Depois de todas as rotas da API
+// Serve quaisquer arquivos estáticos compilados pelo React
+app.use(express.static(path.join(__dirname, 'build')));
+
+// Rota catch-all para suportar o roteamento do lado do cliente do React
+// Ele deve retornar o index.html do React para qualquer requisição que não seja para a API
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
+// Inicia o servidor
+app.listen(port, () => {
+    console.log(`Server running on http://localhost:${port}`);
+});
+
 
 const db = new sqlite3.Database('../data/leads.db', (err) => {
     if (err) {
