@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import '../App.css';
 import SingleCard from '../components/Card/Card';
 import LeadCapture from '../components/LeadCapture/LeadCapture';
@@ -9,6 +9,8 @@ import { cardImages } from '../components/Card/cardImages';
 import VictoryModal from '../components/Modals/VictoryModal';
 import DefeatModal from '../components/Modals/DefeatModal';
 import GameSettings from '../pages/GameSettings';
+import { BackgroundColorContext } from '../utils/BackgroundColorContext';
+
 
 
 
@@ -29,6 +31,7 @@ function GameLogic({ leadData }) {
   const [, setShowModal] = useState(true);
   const [rainbowText, setRainbowText] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
+  const { color } = useContext(BackgroundColorContext);
 
 
 
@@ -36,7 +39,10 @@ function GameLogic({ leadData }) {
     setShowModal(false);
   };
 
-  
+  useEffect(() => {
+    // This effect runs once when the component mounts and whenever the color changes
+    document.documentElement.style.setProperty('--background-color', color);
+  }, [color]);
 
   useEffect(() => {
     const handleStorageChange = (e) => {
