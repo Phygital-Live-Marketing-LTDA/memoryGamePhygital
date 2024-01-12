@@ -11,45 +11,10 @@ Link para jogar sem precisar baixar o projeto:
 
 
 O jogo grava os pontos no placar pelo LocalStorage
-e o jogador tem 20 turnos para encontrar as combinacoes.
+e o jogador tem 10 turnos para encontrar as combinacoes.
 <br>
 Depois de tres sequencias consecutivas, os pontos sao multiplicados ate o jogador errar e quebrara sequencia.
 <br>
 No fim da partida os turnos nao usados sao convertidos para pontos 
 
-## Instalação
-1- Clone este repositório:
-
-```bash
-git clone https://github.com/PedroTresmondi/memorygame.git
-```
-
-
-2- Acesse o diretório do projeto:
-```bash
-cd memorygame
-```
-
-3- Instale memorygame com npm
-
-```bash
-npm install
-```
-
-## Rodando localmente
-
-Para iniciar a aplicação 
-
-```bash
-  npm start
-```
-
-
-## Rodando os testes Unitarios
-
-Para rodar os testes, rode o seguinte comando
-
-```bash
-  npm test
-```
 
