@@ -7,17 +7,19 @@ const path = require('path');
 process.env.TZ = 'America/Sao_Paulo';
 
 const app = express();
-const port = 3001;
+const port = 3002; 
 
 app.use(cors());
 app.use(express.json());
 
-// Depois de todas as rotas da API
-// Serve quaisquer arquivos estáticos compilados pelo React
+app.use(cors({
+    origin: process.env.CLIENT_ORIGIN || 'http://localhost:3000', // URL do seu cliente React
+    optionsSuccessStatus: 200
+}));
+
+
 app.use(express.static(path.join(__dirname, 'build')));
 
-// Rota catch-all para suportar o roteamento do lado do cliente do React
-// Ele deve retornar o index.html do React para qualquer requisição que não seja para a API
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });

@@ -5,6 +5,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import './LeadCapture.css'
 
 function LeadCapture({ onStartGame, onCardTurn }) {
+    const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+
+
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [points] = useState(0);
@@ -13,7 +16,7 @@ function LeadCapture({ onStartGame, onCardTurn }) {
         if (name && email) {
             const lead = { name, email, points };
 
-            fetch('http://localhost:3001/leads', {
+            fetch(`${apiUrl}/leads`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -23,7 +26,7 @@ function LeadCapture({ onStartGame, onCardTurn }) {
                 .then(response => response.json())
                 .then(data => {
                     console.log('Success:', data);
-                    onStartGame(lead); // Esta linha inicia o jogo com os dados do usuário
+                    onStartGame(lead); 
                 })
                 .catch((error) => {
                     console.error('Error:', error);
