@@ -27,7 +27,7 @@ function InitialPage({ onStartGame }) {
 
             </div>
             {!showLeadCapture ? (
-                <p className='text-white font-light animate pop delay-2 '>Toque aqui para iniciar</p>) : (
+                <p className='text-white font-light animate pop delay-2 '>Toque aqui para iniciar!</p>) : (
                 <LeadCapture onStartGame={handleStartGameWithLead} />
             )}
         </div>
