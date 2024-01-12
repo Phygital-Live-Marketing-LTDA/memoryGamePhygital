@@ -132,12 +132,18 @@ table {
 
 
 
+:root {
+  --background-color: #1b1424; /* Default color */
+}
+
+
+
 body {
   font-family: Lato, sans-serif;
   margin: 0;
   font-size: 1.5em;
   text-align: center;
-  background: #1b1424;
+  background: var(--background-color);
   color: #ffff;
   margin: 0% 10% 0% 10%
 }
