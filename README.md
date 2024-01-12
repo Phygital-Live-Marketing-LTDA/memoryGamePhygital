@@ -1,13 +1,14 @@
 
-#MemoryGame para phygital 
+## DEMO MemoryGame phygital 
 
 Link para jogar sem precisar baixar o projeto:
 <br>
-(https://memorygame-kohl.vercel.app/)
+([https://memorygame-kohl.vercel.app/](https://memory-game-phygital.vercel.app/))
 
 ## Screenshots
 
-![App Screenshot](https://res.cloudinary.com/practicaldev/image/fetch/s--5tuoyVED--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_800/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/7tx1k5jud6je10jv5nj0.png)
+![App Screenshot](https://github.com/PedroTresmondi/memoryGamePhygitalDeployDemo/assets/89213868/9dc4cd7e-efb6-47c8-a4c5-6d1810f6f919)
+
 
 O jogo grava os pontos no placar pelo LocalStorage
 e o jogador tem 20 turnos para encontrar as combinacoes.
@@ -51,10 +52,4 @@ Para rodar os testes, rode o seguinte comando
 ```bash
   npm test
 ```
-
-
-## 🔗 Links
-[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://3smondi-portfolio.vercel.app/)
-[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/pedro-tresmondi/)
-
 
