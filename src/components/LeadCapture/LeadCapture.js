@@ -16,25 +16,23 @@ function LeadCapture({ onStartGame, onCardTurn }) {
         if (name && email) {
             const lead = { name, email, points };
 
-            fetch(`${apiUrl}/leads`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(lead),
-            })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Success:', data);
-                    onStartGame(lead); 
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                });
+            // Salvar lead no localStorage em vez de enviar para o servidor
+            try {
+                // Gera um ID único para o lead
+                const id = Date.now();
+                localStorage.setItem(`lead_${id}`, JSON.stringify(lead));
+
+                console.log('Lead saved with id:', id);
+                onStartGame(lead); // Esta linha inicia o jogo com os dados do usuário
+            } catch (error) {
+                console.error('Error saving lead:', error);
+                toast.error("Erro ao salvar os dados!");
+            }
         } else {
-            toast("Preencha todos os campos!");
+            toast.warn("Preencha todos os campos!");
         }
     };
+
 
     return (
         <div className="lead-modal-overlay">
