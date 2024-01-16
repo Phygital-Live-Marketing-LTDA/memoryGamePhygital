@@ -14,24 +14,21 @@ function App() {
   const handleStartGame = (lead) => {
     setLeadData(lead);
   };
-  useEffect(() => {
-    // This effect runs once when the component mounts
-    const savedColor = localStorage.getItem('backgroundColor');
-    if (savedColor) {
-      document.documentElement.style.setProperty('--background-color', savedColor);
-    }
-  }, []);
+  //  useEffect(() => {
+  // This effect runs once when the component mounts
+  //    const savedColor = localStorage.getItem('backgroundColor');
+  //    if (savedColor) {
+  //      document.documentElement.style.setProperty('--background-color', savedColor);
+  //    }
+  //  }, []);
 
   return (
-    <BackgroundColorProvider>
-
-      <Router>
-        <Routes>
-          <Route path="/" element={!leadData ? <InitialPage onStartGame={handleStartGame} /> : <GameLogic leadData={leadData} />} />
-          <Route path="/config" element={<GameSettings />} />
-        </Routes>
-      </Router>
-    </BackgroundColorProvider>
+    <Router>
+      <Routes>
+        <Route path="/" element={!leadData ? <InitialPage onStartGame={handleStartGame} /> : <GameLogic leadData={leadData} />} />
+        <Route path="/config" element={<GameSettings />} />
+      </Routes>
+    </Router>
   );
 }
 
