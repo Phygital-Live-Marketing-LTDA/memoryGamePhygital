@@ -3,7 +3,7 @@
 
 Link para jogar sem precisar baixar o projeto:
 <br>
-([https://memorygame-kohl.vercel.app/](https://memory-game-phygital.vercel.app/))
+([https://memory-game-phygital.vercel.app/](https://memory-game-phygital.vercel.app/))
 
 ## Screenshots
 
