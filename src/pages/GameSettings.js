@@ -23,7 +23,7 @@ function GameSettings() {
         const savedSettings = JSON.parse(localStorage.getItem('gameSettings'));
         if (savedSettings && Array.isArray(savedSettings.pairs)) {
             setTurns(savedSettings.turns || 10); // Provide default value if not set
-            setColor(savedSettings.color || '#ffffff'); // Provide default value if not set
+            setColor(savedSettings.color || '#fff'); // Provide default value if not set
             setPairs(savedSettings.pairs);
             setCardBack(savedSettings.cardBack);
             document.documentElement.style.setProperty('--background-color', color);

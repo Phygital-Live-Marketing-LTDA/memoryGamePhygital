@@ -3,10 +3,10 @@ import React, { createContext, useState, useEffect } from 'react';
 export const BackgroundColorContext = createContext();
 
 export const BackgroundColorProvider = ({ children }) => {
-    const [color, setColor] = useState('#ffffff');
+    const [color, setColor] = useState('#000');
 
     useEffect(() => {
-        const savedColor = localStorage.getItem('backgroundColor') || '#ffffff';
+        const savedColor = localStorage.getItem('backgroundColor') || '#000';
         setColor(savedColor);
         document.documentElement.style.setProperty('--background-color', savedColor);
     }, []);
